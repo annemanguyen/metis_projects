@@ -164,8 +164,8 @@ _Reduce_:
 - Fast training, but slow to compute (all training is in memory)
 
 **Improving fit**:
-- change k number of neighbors: smaller = more prone to overfit, but larger is hard to run (and pointless; as k approaches n, the prediction converges to the baseline mean guess); **KNeighborsClassifier(n_neighbors = _)
-- change weighting of points, e.g. by distance to penalize further away neighbors: **KNeighborsClassifer(weights = 'distance') - default is uniform
+- change k number of neighbors: smaller = more prone to overfit, but larger is hard to run (and pointless; as k approaches n, the prediction converges to the baseline mean guess); **KNeighborsClassifier(n_neighbors = _)**
+- change weighting of points, e.g. by distance to penalize further away neighbors: **KNeighborsClassifer(weights = 'distance')** - default is uniform
 - change distance function (based on continuous/binary/categorical variables)
 
 **Caveats**:
