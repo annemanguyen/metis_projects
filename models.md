@@ -131,7 +131,7 @@ _Reduce_:
 - Similar to knn, you have to figure out how to compute similarity for categorical variables; how you do this can affect the results
 
 ### Non-linear
-#### Random forest
+#### Random forest:
 
 **Your data looks like**:
 - Okay: large amounts of data, lots of features, outliers, lots of categorical variables
