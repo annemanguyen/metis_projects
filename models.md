@@ -13,6 +13,7 @@ What you need:
 	- omitted variables: when sunny days causes both increase in traffic and accidents (via glare) and it's not in your model
 	- reverse causality: more accidents actually causes more traffic (maybe due to backups along the route)
 	- data that is not missing in a systematic way
+
 Defending your model on these grounds is really difficult and generally not what you need to do anyway, in practical terms.
 
 ### Prediction: Quantities
