@@ -13,6 +13,7 @@ What you need:
 	- omitted variables: when sunny days causes both increase in traffic and accidents (via glare) and it's not in your model
 	- reverse causality: more accidents actually causes more traffic (maybe due to backups along the route)
 	- data that is not missing in a systematic way
+
 Defending your model on these grounds is really difficult and generally not what you need to do anyway, in practical terms.
 
 ### Prediction: Quantities
@@ -35,7 +36,6 @@ Luckily, you can still use linear regression with relaxed assumptions to make a 
 - Try adding interaction terms (x2**x3) if you think some features behave differently at different levels of other features (e.g. traffic is extra likely to lead to car crashes when the weather's bad)
 - L2 regularization, aka Ridge, will help you stabilize your model if there is a lot of multicollinearity
 
-_Reduce_: 
 - L1 regularization, aka Lasso, will help you drop variables that don't have a large effect (this biases the model, so do NOT interpret).
 	- grid search an alpha term that sets the level of your penalty: higher lambda = sparser model (**linear_model.Lasso(alpha = _)**)
 
@@ -65,8 +65,7 @@ _A lot of machine learning resources put logistic regression in with classificat
 - Change in logit for Y given one-unit change in predictor; this can be transformed to an odds ratio for interpretability or into a prediction based on some cutoff of the odds
 - beta coefficients for each independent variable 
 
-**Improving fit**:
-_Reduce_: 
+**Improving fit:**:
 - Lasso regularization
 - Random forest/SVM can give a ranking of variables by importance that you can then stick in your regression to see how their effect
 
@@ -131,7 +130,7 @@ _Reduce_:
 - Similar to knn, you have to figure out how to compute similarity for categorical variables; how you do this can affect the results
 
 ### Non-linear
-#### Random forest
+#### Random forest:
 
 **Your data looks like**:
 - Okay: large amounts of data, lots of features, outliers, lots of categorical variables
@@ -141,8 +140,7 @@ _Reduce_:
 - Fast, scalable (but you'll still have to grow the forest each time you change the model)
 
 **Improving fit**:
-- try different information criterion: **RandomForestClassifier(criterion='gini'|'entropy')**
-_Reduce_:
+- Try different information criterion: **RandomForestClassifier(criterion='gini'|'entropy')**
 - Limit tree depth: **max_depth**
 - Limit number of variables that are used to build each leaf (usually the square root of the number of features): **max_features**
 - Limit splits: **min_samples_split**, **min_samples_leaf**
