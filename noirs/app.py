@@ -31,15 +31,15 @@ def text():
 
 	punct = ['?','.','!','?"','."','!"']
 
+	def text_gen(output):
+		nextword = (output[-3],output[-2], output[-1])
+		output.append(random.choice(cdict[nextword]))
+
 	for i in range(1,lines):
-	    nextword = (output[-3],output[-2], output[-1])
-	    if nextword in cdict.keys():
-	        output.append(random.choice(cdict[nextword]))
+		text_gen(output)
 	        
 	while output[-1][-1] not in punct:
-		nextword = (output[-3], output[-2], output[-1])
-		if nextword in cdict.keys():
-			output.append(random.choice(cdict[nextword]))
+		text_gen(output)
 
 	result = ' '.join(output)
 

@@ -1,0 +1,25 @@
+My project looks at exploring novels with NLP tools. 
+
+Though I looked at the entire body of Raymond Chandler's work, my primary example for this presentation is going to be the 1939 novel, The Big Sleep. You might have seen the movie. So this is a classic example of the noir genre: a tough detective, lots of dark alleys and guns and femme fatales, a mystery that is usually part of a wider conspiracy. Yet the story isn't really the key definer of the noir genre; it's the tone.
+
+As readers, we can sort of qualitatively classify novels - noirs are moody, dark, unsentimental, etc. So the question is, can we recover those characteristics via NLP?
+
+Some stats on Chandler: across 7 books, he wrote over half a million words, 16 thousand of which were unique. If we take this as a measure of vocabulary, you can already start to see how content may vary by author: Dashiell Hammett, author of The Maltese Falcon, and the other big name in noir, used about 11 thousand unique words in about a fifth of the total output. Chandler has about 700 guns while Hammett had about 200. As we expect from hardboiled literature, sentences are short at 12 words each on average (whereas Pride and Prejudice, by contrast, averages 29 words each).
+
+This word frequency chart is nothing special; it's a pretty good illustration of Zipf's law, which posits an inverse rank-frequency relationship (and this is after the stop words have been taken out). 
+
+One stylistic quirk that noirs, and Chandler in particular, are known for are these sort of evocative, over-the-top similes. NLTK's concordance function is an easy way to pull these out:
+
+So the abundance of those similes actually tripped up my sentiment analysis a bit because the word 'like', which is coded positive, appeared so many times.
+
+For this analysis, I used a compilation of sentiment lexicons put together by Brian Foo, which mainly relies on the NRC. Just as a reminder, in this approach, words are tagged as positive or negative. So for the first page of The Big Sleep, positive words would be 'sun', 'shining', 'clean', etc., while negative words would be 'hard', 'dark', 'black'. So one interesting thing that emerges here is that sentiment tracks really well with book length, which is to say that it's at about a 1:1 positive to negative word ratio in each book and it's consistent over the author's career.
+
+So what about sentiment through a particular book? By looking at sentiment per page, we can start to recover the plot structure: things are fine, so you have positive sentiment, and then a problem occurs, which is negative, and then the problem gets solved, which is positive, etc. These two are the most well-known Chandler novels: The Big Sleep, at the beginning of his career, and The Long Goodbye, toward the end. So you can see that they're fairly different; the Big Sleep has a lot more pronounced action scenes, but overall sentiment for both stays pretty close to zero. By comparison, here's Pride and Prejudice: overall sentiment is much more positive, and you have a more traditional plot structure rather than multiple reversals like the noir novels, and you don't get the giant ups and downs because the language is more subtle.
+
+Let's look a little more closely at sentiment analysis in The Big Sleep. Here I tested how well sentiment tied with plot and I was actually surprised at how much they seemed to match up. Not everything is perfect here, and that's because I went through the novel and picked out major scenes or turning points, and then I plotted them on the graph without actually looking at the graph first. So as you can see, the sentiment analysis does appear to be capturing a good number of the plot events throughout the book. 
+
+Additionally, in red you have pages with lots of guns, and in yellow you have pages with women, so you can start to see the general noir tendency of walking around detecting and then periodically getting into these big climactic scenes with bad men and women.
+
+On topic analysis, I tried a lot of models and a lot of adjustments. When I treated each novel as a document, I recovered a lot of character names, which makes sense, right? What's the unifying element of a particular novel? Its cast of characters. When I treated each sentence as part of a larger corpus, some motifs kinda emerged - it's interesting that both LDA and NMF recovered this topic of doors and eyes and came and opening and looking - so these are a combination of like often-used and often-used together words, which is a very rough approximation of style, right? Looking at these gives you a sort of noir sense - the detective at his desk, the mysterious person at the door...
+
+So we've gotten at the question of author/genre patterns in a variety of ways via NLP tools - looking at word choice, sentence length, plot structure - but it's interesting to me that it's still so much easier to grasp sort of holistically as a reader. So to that end I wrote a little Markov text generator using all of the Chandler books, so you can write your own 1940s detective novel...
