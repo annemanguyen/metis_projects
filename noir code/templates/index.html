@@ -1,0 +1,25 @@
+<html>
+<head>
+  <style type="text/css">
+    body {background-color: #837E7C;}
+    div.form {display: block; text-align: center;margin: 100px 150px 50px 150px;}
+    form {display: inline-block; margin-left: auto; margin-right: auto; text-align: center; font: 20px Courier,monospace;}
+    select {background-color: #B6B6B4; font: 14px Courier,monospace; padding: 5px 5px; display: inline-block;}
+    input {display: inline-block; background-color: #B6B6B4; font: 14px Courier, monospace; padding: 7px 10px 7px 10px; appearance:none; box-shadow: none; border: none;}
+  </style>
+</head>
+ <body>
+ <div class='form'>
+  <form action="{{ url_for('text') }}" method="post" class="text">
+    I'd like to give you some words of warning:
+    <select name="lines">
+      {% for n in range(50,260,50) %}
+        <option value="{{n}}">{{n}}</option>
+      {% endfor %}
+    </select>
+    <br /><br />
+    <input class="button" type="submit" value="All writers are punks . . .">
+  </form>
+  </div>
+ </body>
+</html>
