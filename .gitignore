@@ -1,0 +1,8 @@
+*.csv
+*.pkl
+*.dbf
+*.prj
+*.qpj
+*.shp
+*.shx
+*checkpoint.ipynb
