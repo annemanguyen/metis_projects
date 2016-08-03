@@ -12,7 +12,7 @@ What you need:
 - no endogeneity:
 	- omitted variables: when sunny days causes both increase in traffic and accidents (via glare) and it's not in your model
 	- reverse causality: more accidents actually causes more traffic (maybe due to backups along the route)
-	- data that is not missing in a systematic way
+- data that is not missing in a systematic way
 
 Defending your model on these grounds is really difficult and generally not what you need to do anyway, in practical terms.
 
@@ -33,7 +33,7 @@ Luckily, you can still use linear regression with relaxed assumptions to make a 
 **Improving fit**:
 - Stepwise regression, aka adding and subtracting features until you get a nice R-squared, is extremely frowned upon in academia but is apparently okay in the real world. You can use the likelihood-ratio test with each predictor to build your model based on their contributions.
 - Try multinomial transformations of your features
-- Try adding interaction terms (x2**x3) if you think some features behave differently at different levels of other features (e.g. traffic is extra likely to lead to car crashes when the weather's bad)
+- Try adding interaction terms (x2*x3) if you think some features behave differently at different levels of other features (e.g. traffic is extra likely to lead to car crashes when the weather's bad)
 - L2 regularization, aka Ridge, will help you stabilize your model if there is a lot of multicollinearity
 
 - L1 regularization, aka Lasso, will help you drop variables that don't have a large effect (this biases the model, so do NOT interpret).
