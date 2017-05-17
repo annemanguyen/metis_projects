@@ -1,7 +1,6 @@
 ## So you want to choose a model:
 
-### Explanation:
-Let's just resign ourselves to _not_ doing this. 
+### Goal: Explanation
 
 #### Linear/logistic regression:
 What you want to do:
@@ -16,7 +15,7 @@ What you need:
 
 Defending your model on these grounds is really difficult and generally not what you need to do anyway, in practical terms.
 
-### Prediction: Quantities
+### Goal: Prediction: Quantities
 
 #### Linear regression:
 Luckily, you can still use linear regression with relaxed assumptions to make a good prediction if you don't care about the coefficients on the independent variables. Then you can just throw in all the features you think of because multicollinearity doesn't affect the overall model fit.
@@ -33,7 +32,7 @@ Luckily, you can still use linear regression with relaxed assumptions to make a 
 **Improving fit**:
 - Stepwise regression, aka adding and subtracting features until you get a nice R-squared, is extremely frowned upon in academia but is apparently okay in the real world. You can use the likelihood-ratio test with each predictor to build your model based on their contributions.
 - Try multinomial transformations of your features
-- Try adding interaction terms (x2*x3) if you think some features behave differently at different levels of other features (e.g. traffic is extra likely to lead to car crashes when the weather's bad)
+- Try adding interaction terms (x2\*x3) if you think some features behave differently at different levels of other features (e.g. traffic is extra likely to lead to car crashes when the weather's bad)
 - L2 regularization, aka Ridge, will help you stabilize your model if there is a lot of multicollinearity
 
 - L1 regularization, aka Lasso, will help you drop variables that don't have a large effect (this biases the model, so do NOT interpret).
@@ -43,9 +42,9 @@ Luckily, you can still use linear regression with relaxed assumptions to make a 
 - In statsmodels, don't forget to make an intercept (**sm.add_constant()**). SM returns a lot of good things like coefficients and confidence intervals but the score function is _not_ an accuracy score, so you'll have to compute your own.
 
 
-### Prediction: Classes
+### Goal: Prediction: Classes
 
-### Linear
+### Linear Methods
 Generally if you think your classes are separable via linear boundary (a line, an ellipse, a parabola), you should pick one of these because they are faster and easier to train. If you can draw a linear boundary, choosing something like knn won't add much value. However, these are not a good choice if you think you will have multidimensional clusters of labels that are overlap. Try these first.
 
 #### Logistic regression: 
@@ -67,7 +66,7 @@ _A lot of machine learning resources put logistic regression in with classificat
 
 **Improving fit:**:
 - Lasso regularization
-- Random forest/SVM can give a ranking of variables by importance that you can then stick in your regression to see how their effect
+- Random forest/SVM can give a ranking of variables by importance that you can then stick in your regression
 
 **Caveats**:
 - May not converge with a lot of multicollinearity in Xs - reduce first
@@ -129,7 +128,7 @@ _A lot of machine learning resources put logistic regression in with classificat
 - Variables must be scaled
 - Similar to knn, you have to figure out how to compute similarity for categorical variables; how you do this can affect the results
 
-### Non-linear
+### Non-linear Methods
 #### Random forest:
 
 **Your data looks like**:
@@ -140,7 +139,7 @@ _A lot of machine learning resources put logistic regression in with classificat
 - Fast, scalable (but you'll still have to grow the forest each time you change the model)
 
 **Improving fit**:
-- Try different information criterion: **RandomForestClassifier(criterion='gini'|'entropy')**
+- Try different information criterion: **RandomForestClassifier(criterion='gini|entropy')**
 - Limit tree depth: **max_depth**
 - Limit number of variables that are used to build each leaf (usually the square root of the number of features): **max_features**
 - Limit splits: **min_samples_split**, **min_samples_leaf**
