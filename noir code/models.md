@@ -106,28 +106,6 @@ _A lot of machine learning resources put logistic regression in with classificat
 - If not linearly separable: kernel choice ('linear', 'poly', 'rbf', etc.)
 - For rbf, poly, and sigmoid kernels: gamma term defines influence of each training example; high gamma = overfit
 
-#### K-means clustering:
-
-**Your data looks like**:
-- Few features
-- Little missing data, little noise, no outliers
-- Multicollinearity: okay
-
-**You want**:
-- fast, **unsupervised** predictions
-
-**Improving fit**:
-- Change k number of clusters (which is essentially changing the size of the clusters) - k-means is super-sensitive to this: **KMeans(n_clusters = _)**
-- Starting points (seeds/centroids) of each of the clusters - sklearn will try a number (**n_init**) for you
-- Weight features by importance in preprocessing because kmeans just uses Euclidean distances 
-
-**Caveats**:
-- BIG assumptions: spherical clusters, all variables have same variance, all clusters are about the same size
-- Will return clusters even if there aren't any actual clusters!
-- Clusters have hard boundaries; there's no softness allowance like in SVM
-- Variables must be scaled
-- Similar to knn, you have to figure out how to compute similarity for categorical variables; how you do this can affect the results
-
 ### Non-linear Methods
 #### Random forest:
 
@@ -169,3 +147,26 @@ _A lot of machine learning resources put logistic regression in with classificat
 - Sensitive to class imbalance
 - Remember to normalize/standardize your continuous features and encode categorical variables 
 
+### Goal: Clustering
+
+#### K-means:
+
+**Your data looks like**:
+- Few features
+- Little missing data, little noise, no outliers
+- Multicollinearity: okay
+
+**You want**:
+- fast, **unsupervised** predictions
+
+**Improving fit**:
+- Change k number of clusters (which is essentially changing the size of the clusters) - k-means is super-sensitive to this: **KMeans(n_clusters = _)**
+- Starting points (seeds/centroids) of each of the clusters - sklearn will try a number (**n_init**) for you
+- Weight features by importance in preprocessing because kmeans just uses Euclidean distances 
+
+**Caveats**:
+- BIG assumptions: spherical clusters, all variables have same variance, all clusters are about the same size
+- Will return clusters even if there aren't any actual clusters!
+- Clusters have hard boundaries; there's no softness allowance like in SVM
+- Variables must be scaled
+- Similar to knn, you have to figure out how to compute similarity for categorical variables; how you do this can affect the results
